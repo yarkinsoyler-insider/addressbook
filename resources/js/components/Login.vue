@@ -42,8 +42,8 @@ export default {
                 await this.$axios.get('/sanctum/csrf-cookie');
 
                 const response = await this.$axios.post('/login', this.form);
-                console.log(response.data); // Başarılı giriş yanıtını burada işleyebilirsiniz
-                // Giriş başarılıysa kullanıcıyı yönlendirebilir veya durumu güncelleyebilirsiniz.
+                console.log(response.data);
+
                 this.$router.push({ name: 'contact-list' });
             } catch (error) {
                 this.error = error.response?.data?.message || 'Login failed';

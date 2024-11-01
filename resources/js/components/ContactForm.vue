@@ -33,7 +33,7 @@ export default {
         phone: '',
         address: ''
       },
-      isEditing: false, // Düzenleme modunu otomatik belirlemek için false olarak başlatıyoruz
+      isEditing: false,
       loading: false,
       error: null
     };
@@ -42,12 +42,12 @@ export default {
     async submitForm() {
       this.loading = true;
       try {
-        const id = this.$route.params.id; // Route parametresinden id alınır
+        const id = this.$route.params.id;
         if (this.isEditing) {
-          await this.$axios.put(`/contacts/${id}`, this.form); // Güncelleme isteği
+          await this.$axios.put(`/contacts/${id}`, this.form);
           alert('Contact updated successfully');
         } else {
-          await this.$axios.post('/contacts', this.form); // Yeni kayıt isteği
+          await this.$axios.post('/contacts', this.form);
           alert('Contact created successfully');
         }
         this.$router.push({ name: 'contact-list' });
@@ -61,7 +61,7 @@ export default {
       const id = this.$route.params.id;
       try {
         const response = await this.$axios.get(`/contacts/${id}`);
-        this.form = response.data; // Var olan contact bilgilerini formda göster
+        this.form = response.data;
       } catch (error) {
         this.error = 'Failed to load contact details.';
       }
@@ -69,9 +69,9 @@ export default {
   },
   mounted() {
     const id = this.$route.params.id;
-    this.isEditing = !!id; // Eğer id varsa düzenleme moduna geç
+    this.isEditing = !!id;
     if (this.isEditing) {
-      this.fetchContact(); // Düzenleme modundaysa contact bilgilerini yükle
+      this.fetchContact();
     }
   }
 };

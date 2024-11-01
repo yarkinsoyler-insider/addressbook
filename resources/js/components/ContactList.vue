@@ -32,7 +32,7 @@
 export default {
   data() {
     return {
-      contacts: [], // Kullanıcıya ait kontaklar
+      contacts: [],
       loading: true,
       error: null
     };
@@ -58,7 +58,7 @@ export default {
       if (confirm('Are you sure you want to delete this contact?')) {
         try {
           await this.$axios.delete(`/contacts/${id}`);
-          this.contacts = this.contacts.filter(contact => contact.id !== id); // Listeden çıkar
+          this.contacts = this.contacts.filter(contact => contact.id !== id);
         } catch (error) {
           this.error = 'Failed to delete contact.';
         }
@@ -66,7 +66,7 @@ export default {
     }
   },
   mounted() {
-    this.fetchContacts(); // Sayfa yüklendiğinde kontakları çek
+    this.fetchContacts();
   }
 };
 </script>

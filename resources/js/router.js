@@ -59,18 +59,16 @@ const router = new VueRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-    // Giriş yapma ve kayıt sayfalarına gidiliyorsa, doğrudan izin ver
     if (to.name === 'login' || to.name === 'register') {
         return next()
     }
 
     if (to.meta.requiresAuth) {
         try {
-            // Kullanıcının oturumunun geçerli olup olmadığını kontrol et
-            await axios.get('/user') // `/user` endpointine istek atılır
-            next() // Oturum geçerli, devam et
+            await axios.get('/user')
+            next()
         } catch (error) {
-            next({ name: 'login' }) // Oturum geçerli değil, login sayfasına yönlendir
+            next({ name: 'login' })
         }
     } else {
         next()

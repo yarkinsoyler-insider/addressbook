@@ -8,14 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
-    // Tüm kullanıcıya ait kontakları getir
     public function index()
     {
-        $contacts = Auth::user()->contacts; // Kullanıcının tüm kontaklarını al
+        $contacts = Auth::user()->contacts;
         return response()->json($contacts);
     }
 
-    // Yeni bir kontakt oluştur
     public function store(Request $request)
     {
         $request->validate([
@@ -30,17 +28,15 @@ class ContactController extends Controller
         return response()->json($contact, 201);
     }
 
-    // Belirli bir kontağı getir
     public function show(Contact $contact)
     {
-        $this->authorize('view', $contact); // Kullanıcının yetkisini doğrula
+        $this->authorize('view', $contact);
         return response()->json($contact);
     }
 
-    // Bir kontağı güncelle
     public function update(Request $request, Contact $contact)
     {
-        $this->authorize('update', $contact); // Kullanıcının yetkisini doğrula
+        $this->authorize('update', $contact);
 
         $request->validate([
             'name' => 'required|string',
@@ -54,10 +50,9 @@ class ContactController extends Controller
         return response()->json($contact);
     }
 
-    // Bir kontağı sil
     public function destroy(Contact $contact)
     {
-        $this->authorize('delete', $contact); // Kullanıcının yetkisini doğrula
+        $this->authorize('delete', $contact);
 
         $contact->delete();
 

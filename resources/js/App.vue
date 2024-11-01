@@ -36,14 +36,14 @@ export default {
                 const response = await axios.get('/user');
                 this.user = response.data;
             } catch (error) {
-                this.user = null; // Kullanıcı bilgisi alınamazsa boş bırak
+                this.user = null;
             }
         },
         async handleLogout() {
             try {
                 await axios.post('/logout');
                 this.user = null;
-                this.$router.push('/login'); // Çıkış sonrası login sayfasına yönlendir
+                this.$router.push('/login');
                 alert('Logout successful');
             } catch (error) {
                 alert('Failed to logout');
@@ -56,7 +56,7 @@ export default {
         },
     },
     mounted() {
-        this.fetchUser(); // Uygulama yüklendiğinde kullanıcı bilgilerini al
+        this.fetchUser();
     }
 };
 </script>

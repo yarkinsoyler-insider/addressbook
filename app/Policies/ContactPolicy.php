@@ -9,16 +9,16 @@ class ContactPolicy
 {
     public function view(User $user, Contact $contact)
     {
-        return $user->id === $contact->user_id; // Kullanıcı yalnızca kendi kontaklarını görüntüleyebilir
+        return $user->id === $contact->user_id;
     }
 
     public function update(User $user, Contact $contact)
     {
-        return $user->id === $contact->user_id; // Kullanıcı yalnızca kendi kontaklarını güncelleyebilir
+        return $user->id === $contact->user_id;
     }
 
     public function delete(User $user, Contact $contact)
     {
-        return $user->id === $contact->user_id; // Kullanıcı yalnızca kendi kontaklarını silebilir
+        return $user->id === $contact->user_id;
     }
 }

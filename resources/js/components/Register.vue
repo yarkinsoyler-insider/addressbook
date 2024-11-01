@@ -68,8 +68,8 @@ export default {
             this.validationErrors = null;
             try {
                 const response = await this.$axios.post('/register', this.form);
-                console.log(response.data); // Başarılı kayıt yanıtını burada işleyebilirsiniz
-                // Kayıt başarılıysa yönlendirme veya durum güncellemeleri yapılabilir.
+                console.log(response.data);
+
                 this.$router.push({ name: 'login' });
             } catch (error) {
                 if (error.response?.data?.errors) {

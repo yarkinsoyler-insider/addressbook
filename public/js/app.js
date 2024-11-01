@@ -2121,7 +2121,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 7:
               _context.prev = 7;
               _context.t0 = _context["catch"](0);
-              _this.user = null; // Kullanıcı bilgisi alınamazsa boş bırak
+              _this.user = null;
             case 10:
             case "end":
               return _context.stop();
@@ -2140,7 +2140,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/logout');
             case 3:
               _this2.user = null;
-              _this2.$router.push('/login'); // Çıkış sonrası login sayfasına yönlendir
+              _this2.$router.push('/login');
               alert('Logout successful');
               _context2.next = 11;
               break;
@@ -2162,7 +2162,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     }
   },
   mounted: function mounted() {
-    this.fetchUser(); // Uygulama yüklendiğinde kullanıcı bilgilerini al
+    this.fetchUser();
   }
 });
 
@@ -2204,7 +2204,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
   data: function data() {
     return {
       currentContact: null,
-      // Şu an görüntülenen contact
       loading: true,
       error: null
     };
@@ -2217,7 +2216,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              id = _this.$route.params.id; // Route parametresinden id alınır
+              id = _this.$route.params.id;
               _context.prev = 1;
               _context.next = 4;
               return _this.$axios.get("/contacts/".concat(id));
@@ -2248,7 +2247,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     }
   },
   mounted: function mounted() {
-    this.fetchContact(); // Sayfa yüklendiğinde contact detayını çek
+    this.fetchContact();
   }
 });
 
@@ -2305,7 +2304,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         address: ''
       },
       isEditing: false,
-      // Düzenleme modunu otomatik belirlemek için false olarak başlatıyoruz
       loading: false,
       error: null
     };
@@ -2320,7 +2318,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _this.loading = true;
               _context.prev = 1;
-              id = _this.$route.params.id; // Route parametresinden id alınır
+              id = _this.$route.params.id;
               if (!_this.isEditing) {
                 _context.next = 9;
                 break;
@@ -2328,7 +2326,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               _context.next = 6;
               return _this.$axios.put("/contacts/".concat(id), _this.form);
             case 6:
-              // Güncelleme isteği
               alert('Contact updated successfully');
               _context.next = 12;
               break;
@@ -2336,7 +2333,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               _context.next = 11;
               return _this.$axios.post('/contacts', _this.form);
             case 11:
-              // Yeni kayıt isteği
               alert('Contact created successfully');
             case 12:
               _this.$router.push({
@@ -2372,7 +2368,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               return _this2.$axios.get("/contacts/".concat(id));
             case 4:
               response = _context2.sent;
-              _this2.form = response.data; // Var olan contact bilgilerini formda göster
+              _this2.form = response.data;
               _context2.next = 11;
               break;
             case 8:
@@ -2389,9 +2385,9 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
   },
   mounted: function mounted() {
     var id = this.$route.params.id;
-    this.isEditing = !!id; // Eğer id varsa düzenleme moduna geç
+    this.isEditing = !!id;
     if (this.isEditing) {
-      this.fetchContact(); // Düzenleme modundaysa contact bilgilerini yükle
+      this.fetchContact();
     }
   }
 });
@@ -2448,7 +2444,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
   data: function data() {
     return {
       contacts: [],
-      // Kullanıcıya ait kontaklar
       loading: true,
       error: null
     };
@@ -2516,7 +2511,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 4:
               _this2.contacts = _this2.contacts.filter(function (contact) {
                 return contact.id !== id;
-              }); // Listeden çıkar
+              });
               _context2.next = 10;
               break;
             case 7:
@@ -2532,7 +2527,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     }
   },
   mounted: function mounted() {
-    this.fetchContacts(); // Sayfa yüklendiğinde kontakları çek
+    this.fetchContacts();
   }
 });
 
@@ -2606,8 +2601,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               return _this.$axios.post('/login', _this.form);
             case 7:
               response = _context.sent;
-              console.log(response.data); // Başarılı giriş yanıtını burada işleyebilirsiniz
-              // Giriş başarılıysa kullanıcıyı yönlendirebilir veya durumu güncelleyebilirsiniz.
+              console.log(response.data);
               _this.$router.push({
                 name: 'contact-list'
               });
@@ -2726,8 +2720,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               return _this.$axios.post('/register', _this.form);
             case 6:
               response = _context.sent;
-              console.log(response.data); // Başarılı kayıt yanıtını burada işleyebilirsiniz
-              // Kayıt başarılıysa yönlendirme veya durum güncellemeleri yapılabilir.
+              console.log(response.data);
               _this.$router.push({
                 name: 'login'
               });
@@ -2777,7 +2770,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$axios = (axios__WEBPACK_IMPORTED_MODULE_0___default());
-(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults).baseURL = 'http://localhost:8000/api'; // API base URL
+(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults).baseURL = 'http://localhost:8000/api';
 (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults).withCredentials = true;
 await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie');
 new vue__WEBPACK_IMPORTED_MODULE_3__["default"]({
@@ -2931,8 +2924,7 @@ router.beforeEach(/*#__PURE__*/function () {
           _context.next = 6;
           return axios.get('/user');
         case 6:
-          // `/user` endpointine istek atılır
-          next(); // Oturum geçerli, devam et
+          next();
           _context.next = 12;
           break;
         case 9:
@@ -2940,7 +2932,7 @@ router.beforeEach(/*#__PURE__*/function () {
           _context.t0 = _context["catch"](3);
           next({
             name: 'login'
-          }); // Oturum geçerli değil, login sayfasına yönlendir
+          });
         case 12:
           _context.next = 15;
           break;

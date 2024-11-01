@@ -18,14 +18,14 @@
 export default {
   data() {
     return {
-      currentContact: null, // Şu an görüntülenen contact
+      currentContact: null,
       loading: true,
       error: null
     };
   },
   methods: {
     async fetchContact() {
-      const id = this.$route.params.id; // Route parametresinden id alınır
+      const id = this.$route.params.id;
 
       try {
         const response = await this.$axios.get(`/contacts/${id}`);
@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-    this.fetchContact(); // Sayfa yüklendiğinde contact detayını çek
+    this.fetchContact();
   }
 };
 </script>

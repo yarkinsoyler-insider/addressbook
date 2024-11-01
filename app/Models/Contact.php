@@ -22,7 +22,6 @@ class Contact extends Model
         'updated_at',
     ];
 
-    // User ile ilişki
     public function user()
     {
         return $this->belongsTo(User::class);
